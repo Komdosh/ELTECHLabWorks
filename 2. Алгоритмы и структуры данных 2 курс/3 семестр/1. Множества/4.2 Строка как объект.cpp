@@ -1,9 +1,5 @@
-﻿// ConsoleApplication1.cpp: определяет точку входа для консольного приложения.
-//
-
 #include <iostream>
 #include <cstdlib>
-#include <cstring>
 #include <algorithm>
 #include <time.h>
 #include <string>
