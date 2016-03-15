@@ -1,7 +1,7 @@
 .Model tiny
 .Data
     greeting db "This programm do (A+B-D)xC", 0dh, 0ah, "$"
-    help db "Please, input number from -9000 to 9000", 0dh, 0ah, "$"
+    help db "Please, input number from -900 to 900", 0dh, 0ah, "$"
     textA db "A = $"                                     
     textB db "B = $"
     textC db "C = $"
@@ -12,9 +12,9 @@
     negative db 0
     arr dw 4 dup(?)
     
-    buffer db 6 ;max num with 4 symbols
+    buffer db 5 		;max num with 4 symbols
     blength db ? 
-    bconteg:				  ;consistance of buf is over of prog
+    bconteg:			;consistance of buf is over of prog
         hexstring equ bconteg  
 .Stack 0100h
 
@@ -26,70 +26,70 @@ start:
     
     call setDisp
     
-    lea dx, greeting   ;greeting message
+    lea dx, greeting		;greeting message
     mov ah, 09h
     int 21h  
-    lea dx, help       ;help message
+    lea dx, help       		;help message
     mov ah, 09h
     int 21h
     
-    lea dx, textA      ;A=
+    lea dx, textA      		;A=
     mov ah, 09h
     int 21h
     
-    call input         ;input A
+    call input  		;input A
     mov arr, ax
     call endlp          
      
-    lea dx, textB      ;B=
+    lea dx, textB      		;B=
     mov ah, 09h
     int 21h
     
-    call input         ;input B
+    call input         		;input B
     mov arr+2, ax
     call endlp
     
-    lea dx, textC      ;C=
+    lea dx, textC      		;C=
     mov ah, 09h
     int 21h
     
-    call input         ;input C
+    call input         		;input C
     mov arr+4, ax
     call endlp          
      
-    lea dx, textD      ;D=
+    lea dx, textD      		;D=
     mov ah, 09h
     int 21h
     
-    call input         ;input D
+    call input         		;input D
     mov arr+6, ax
     call endlp  
         
     mov ax, arr
     mov bx, arr+2
-    add ax, bx         ;A+B
+    add ax, bx         		;A+B
     mov bx, arr+6
-    sub ax, bx         ;(A+B)-D
+    sub ax, bx         		;(A+B)-D
     mov bx, arr+4
-    mul bx             ;(A+B-D)xC 
+    mul bx             		;(A+B-D)xC 
     jns printing
     mov negative, 1
     
     
 printing:   
     push ax
-    lea dx, textRes ;Result=
+    lea dx, textRes 		;Result=
     mov ah, 09h
     int 21h    
     pop ax             
-    call print         ;output result
+    call print         		;output result
     call endlp              
     
     call quit                                                 
 
 proc setDisp   
- 	xor dx,dx			;cursor's position
-	mov ah,02h			;set at (0,0)
+ 	xor dx,dx		;cursor's position
+	mov ah,02h		;set at (0,0)
 	int 10h    
 	mov bl,00001010b	;colors green on black
 	mov cx,25*80		;count of simbols on display	
@@ -101,17 +101,17 @@ endp
 proc quit          
     lea dx, pkey
     mov ah, 9h
-    int 21h        ; output string at ds:dx
+    int 21h        		; output string at ds:dx
     
     ; wait for any key....    
     mov ah, 1h
     int 21h
     
-    mov ax, 4c00h ; exit to operating system.
+    mov ax, 4c00h 		; exit to operating system.
     int 21h 
 endp
 
-proc endlp       ;press enter
+proc endlp       		;press enter
     push dx    
     push ax
     lea dx, endl
@@ -123,19 +123,19 @@ proc endlp       ;press enter
 endp     
 
 proc input
-	lea dx,buffer       ;buffer's address
-	mov ah,0ah			;write in buffer	
+	lea dx,buffer       	;buffer's address
+	mov ah,0ah		;write in buffer	
 	int 21h  
 	
 ;from string to bin  
 
-	xor di,di			;start of buffer
-	xor ax,ax			;clear ax
+	xor di,di		;start of buffer
+	xor ax,ax		;clear ax
 	mov cl,blength
 	xor ch,ch
 	xor bx,bx
-	mov si,cx			;buffer's length	
-	mov cl,10			;multiplier      
+	mov si,cx		;buffer's length	
+	mov cl,10		;multiplier      
 	
     mov bl,byte ptr bconteg[di]
 	cmp bl, '-'
@@ -145,16 +145,16 @@ proc input
 
 toHex:
 	mov bl,byte ptr bconteg[di]
-	sub bl,'0'		    	    ;num = num's code - 30h
-	jb  badInp		    	    ;if symbol not a num
-	cmp bl,9		    	    ;same
-	ja  badInp		    	    ;try input again
-	mul cx			    	    ;multiply on 10
-	add ax,bx		    	    ;+new num to ax	
-	inc di			      	    ;next symbol
-	cmp di,si		    	    ;if di<blength + 1  	
+	sub bl,'0'		 ;num = num's code - 30h
+	jb  badInp		 ;if symbol not a num
+	cmp bl,9		 ;same
+	ja  badInp		 ;try input again
+	mul cx			 ;multiply on 10
+	add ax,bx		 ;+new num to ax	
+	inc di			 ;next symbol
+	cmp di,si		 ;if di<blength + 1  	
 	jb toHex                        
-	cmp negative, 1             ;num is negative 
+	cmp negative, 1          ;num is negative 
 	jnz nM
 	neg ax
 	mov negative, 0
@@ -169,7 +169,7 @@ endInp:
 endp
 
 proc print              
-    cmp negative, 1     ;if num<0
+    cmp negative, 1     	;if num<0
     jnz stPrint
     push ax
     mov dl, '-'
@@ -179,24 +179,24 @@ proc print
     neg ax
     
 stPrint:
-	mov bx,0ah			;divider
-	xor cx,cx			;clear count    
+	mov bx,0ah		;divider
+	xor cx,cx		;clear count    
 	
 divloop:
-	xor dx,dx			;clear dx
-	div bx				;divide on 10
+	xor dx,dx		;clear dx
+	div bx			;divide on 10
 	add dx,'0'		;make a symbol from num
-	push dx			    ;save dx
+	push dx			;save dx
 	inc cx				
-	test ax,ax			;if ax!=0
-	jnz divloop			;continue to divide  
+	test ax,ax		;if ax!=0
+	jnz divloop		;continue to divide  
 	
 restore:
-	;pop ax				;read from stack  
+	;pop ax			;read from stack  
 	pop ax
 	mov dx, ax		;
-	mov ah,2			;print symbol from al
-	int 21h				;
+	mov ah,2		;print symbol from al
+	int 21h			;
 	loop restore
 	ret
 endp
