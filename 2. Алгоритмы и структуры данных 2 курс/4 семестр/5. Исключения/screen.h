@@ -1,18 +1,18 @@
-#pragma once
+п»ї#pragma once
 #include "shape.h"
 enum { XMAX = 80, YMAX = 40 };
-class point { //Точка
+class point { //РўРѕС‡РєР°
 public:
 	int x, y;
 	point() {};
 	point(int a, int b) :x(a), y(b) {}
 };
-//Функции работы с экраном
-extern void put_point(int a, int b); //Вывод точки
+//Р¤СѓРЅРєС†РёРё СЂР°Р±РѕС‚С‹ СЃ СЌРєСЂР°РЅРѕРј
+extern void put_point(int a, int b); //Р’С‹РІРѕРґ С‚РѕС‡РєРё
 inline void put_point(point p) { put_point(p.x, p.y); }
-extern void put_line(int, int, int, int); //Вывод линии
+extern void put_line(int, int, int, int); //Р’С‹РІРѕРґ Р»РёРЅРёРё
 extern void put_line(point a, point b) { put_line(a.x, a.y, b.x, b.y); }
-extern void screen_init();    //Создание экрана
-extern void screen_destroy(); //Удаление экрана
-extern void screen_refresh(); //Обновление экрана
-extern void screen_clear();   //Очистка экрана
+extern void screen_init();    //РЎРѕР·РґР°РЅРёРµ СЌРєСЂР°РЅР°
+extern void screen_destroy(); //РЈРґР°Р»РµРЅРёРµ СЌРєСЂР°РЅР°
+extern void screen_refresh(); //РћР±РЅРѕРІР»РµРЅРёРµ СЌРєСЂР°РЅР°
+extern void screen_clear();   //РћС‡РёСЃС‚РєР° СЌРєСЂР°РЅР°

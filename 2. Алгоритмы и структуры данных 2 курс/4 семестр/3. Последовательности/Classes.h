@@ -1,4 +1,4 @@
-#ifndef CLASSES_H
+п»ї#ifndef CLASSES_H
 #define CLASSES_H
 
 class HT
@@ -31,27 +31,27 @@ public:
 	HT& operator & (const HT &) const;
 	HT& operator = (const HT &);
 
-	//геттеры
+	//РіРµС‚С‚РµСЂС‹
 	void getInf();
 	void getInfSeq();
 	char getName() { return name; }
 	int getPower() { return power; }
 
-	//сеттеры
+	//СЃРµС‚С‚РµСЂС‹
 	void setName(char iName) { name = iName; }
 
-	//функции ввода
+	//С„СѓРЅРєС†РёРё РІРІРѕРґР°
 	void genSet();
 	void inpSet();
 	int fileSet();
 
-	//функции работы с последовательностями
+	//С„СѓРЅРєС†РёРё СЂР°Р±РѕС‚С‹ СЃ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЏРјРё
 	void concat(const HT&);
 	void excl(const HT&);
 	void erase(int start, int finish);
 	//void erase(const HT&, int, int);
 
-	//Работа с хеш-таблицей
+	//Р Р°Р±РѕС‚Р° СЃ С…РµС€-С‚Р°Р±Р»РёС†РµР№
 	void addHT(int, int);
 	LIST* findPos(int) const;
 	LIST* findKey(int) const;

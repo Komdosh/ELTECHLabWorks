@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <cstdlib>
 #include <algorithm>
 #include <time.h>
@@ -7,10 +7,10 @@
 
 using namespace std;
 //***********************************************************************
-//Прототипы функций
+//РџСЂРѕС‚РѕС‚РёРїС‹ С„СѓРЅРєС†РёР№
 int menu(int);
 //***********************************************************************
-//Конструктор копий
+//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёР№
 HT::HT(const HT& rightExp)
 {
 	LIST* t;
@@ -33,7 +33,7 @@ HT::HT(const HT& rightExp)
 
 }
 //***********************************************************************
-//Перегрузка операторов HT
+//РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂРѕРІ HT
 HT& HT::operator & (const HT& rightExp) const
 {
 	HT* temp = new HT;
@@ -128,7 +128,7 @@ HT& HT::operator = (const HT& rightExp)
 	return *this;
 }
 //***********************************************************************
-//Функции-члены HT
+//Р¤СѓРЅРєС†РёРё-С‡Р»РµРЅС‹ HT
 void HT::getInf()
 {
 	if (power) {
@@ -148,7 +148,7 @@ void HT::getInf()
 		}
 	}
 	else
-		cout << "Хеш-таблица " << name << " пустая";
+		cout << "РҐРµС€-С‚Р°Р±Р»РёС†Р° " << name << " РїСѓСЃС‚Р°СЏ";
 	cout << endl;
 }
 //***********************************************************************
@@ -164,7 +164,7 @@ void HT::getInfSeq()
 		cout << "\b>" << endl;
 	}
 	else
-		cout << name << " - Пустая последовательность!"<<endl;
+		cout << name << " - РџСѓСЃС‚Р°СЏ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ!"<<endl;
 }
 //***********************************************************************
 void HT::genSet()
@@ -178,23 +178,23 @@ void HT::genSet()
 void HT::inpSet()
 {
 	short size, t;
-	cout << "Ввод множества " << name << endl;
-	cout << "Введите количество элементов от 0 до 16:" << endl;
+	cout << "Р’РІРѕРґ РјРЅРѕР¶РµСЃС‚РІР° " << name << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РѕС‚ 0 РґРѕ 16:" << endl;
 	do {
 		cin.clear();
 		cin.sync();
 		cin >> size;
 		if (size < 0 || size>16 || cin.fail())
-			cout << "Число от 0 до 16!\nВведите повторно:";
+			cout << "Р§РёСЃР»Рѕ РѕС‚ 0 РґРѕ 16!\nР’РІРµРґРёС‚Рµ РїРѕРІС‚РѕСЂРЅРѕ:";
 	} while (size < 0 || size>16 || cin.fail());
-	cout << "Введите элементы множества от 0 до 99 без повторов" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚С‹ РјРЅРѕР¶РµСЃС‚РІР° РѕС‚ 0 РґРѕ 99 Р±РµР· РїРѕРІС‚РѕСЂРѕРІ" << endl;
 	for (int i = 0; i < size;) {
 		cin.clear();
 		cin.sync();
-		cout << i << "-е число " << name << ":";
+		cout << i << "-Рµ С‡РёСЃР»Рѕ " << name << ":";
 		cin >> t;
 		if (t<0 || t>99 || cin.fail())
-			cout << "Число от 0 до 99!\nВведите другое значение\n";
+			cout << "Р§РёСЃР»Рѕ РѕС‚ 0 РґРѕ 99!\nР’РІРµРґРёС‚Рµ РґСЂСѓРіРѕРµ Р·РЅР°С‡РµРЅРёРµ\n";
 		else
 			addHT(t,i);
 			++i;
@@ -209,10 +209,10 @@ int HT::fileSet()
 	char n[6] = " .txt";
 	n[0] = name;
 	if (!(file = fopen(n, "r")))
-		return 1;         //Файла не существует
+		return 1;         //Р¤Р°Р№Р»Р° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 	fseek(file, 0, SEEK_END);
 	if (!ftell(file))
-		return 2;         //Файл пустой
+		return 2;         //Р¤Р°Р№Р» РїСѓСЃС‚РѕР№
 	rewind(file);
 	fscanf(file, "%d", &size);
 	for (int i = 0; i<size; ++i)
@@ -242,7 +242,7 @@ void HT::concat(const HT &rightExp)
 //***********************************************************************
 void HT::excl(const HT& rightExp)
 {
-	int *position = new int[rightExp.power + 1];
+	/*int *position = new int[rightExp.power + 1];
 	LIST* t;
 	if (t = findKey(rightExp.findPos(0)->key))
 		position[0] = t->pos;
@@ -257,7 +257,33 @@ void HT::excl(const HT& rightExp)
 		if (position[j] - position[j - 1] != 1)
 		 return;
 	}
-	erase(position[0], position[rightExp.power - 1]);
+	if (!(t = findKey(rightExp.findPos(0)->key)))
+	return;
+	else
+	stPos = t->pos;
+	//erase(position[0], position[rightExp.power - 1]);*/
+	if (!power || !rightExp.power || power<rightExp.power)
+		return;
+	int stPos;
+	LIST* t = findKey(rightExp.findPos(0)->key);
+	int i, j=0;
+	while (t->next && j == 0){
+		if(t->key == rightExp.findPos(0)->key){
+			i = t->pos;
+			j = 0;
+			stPos = t->pos;
+			while (i<power && j < rightExp.power) {
+				if (findPos(i + j)->key != rightExp.findPos(j)->key) {
+					j = 0;
+					break;
+				}
+				++j;
+			}
+		}
+		t = t->next;
+	}
+	if(j!=0)
+		erase(stPos, stPos + rightExp.power - 1);
 }
 //***********************************************************************
 void HT::erase(int start, int finish)
@@ -356,7 +382,7 @@ HT::LIST* HT::findKey(int val) const
 	return nullptr;
 }
 //***********************************************************************
-//Основная функция
+//РћСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ
 int main(int argc, char** argv)
 {
 	srand(time(nullptr));
@@ -368,21 +394,21 @@ int main(int argc, char** argv)
 		switch (pause = menu(0)){
 		case 1:
 			A.fileSet(); B.fileSet();
-			cout << "Демонстрационные последовательности:" << endl;
+			cout << "Р”РµРјРѕРЅСЃС‚СЂР°С†РёРѕРЅРЅС‹Рµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё:" << endl;
 			break;
 		case 2:
 			A.genSet(); B.genSet();
-			cout << "Сгенерированные последовательности:" << endl;
+			cout << "РЎРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Рµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё:" << endl;
 			break;
 		case 3:
 			A.inpSet(); B.inpSet();
-			cout << "Введённые последовательности:" << endl;
+			cout << "Р’РІРµРґС‘РЅРЅС‹Рµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё:" << endl;
 			break;
 		case 0:
-			cout << "До новых встреч!" << endl;
+			cout << "Р”Рѕ РЅРѕРІС‹С… РІСЃС‚СЂРµС‡!" << endl;
 			break;
 		default:
-			cout << "Такого пункта не существует, повторите ввод!" << endl;
+			cout << "РўР°РєРѕРіРѕ РїСѓРЅРєС‚Р° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ!" << endl;
 		}
 		do{
 			if (A.getPower() || B.getPower()) {
@@ -393,79 +419,69 @@ int main(int argc, char** argv)
 				switch (pause = menu(1)) {
 				case 1:
 					A.concat(B);
-					//B = *C;
-
-					//A.getInf();
-					//A.getInfSeq();
 					break;
 				case 2:
 					while (st == -1) {
-						cout << "Введите начальную позицию с которой следует удалить: ";
+						cout << "Р’РІРµРґРёС‚Рµ РЅР°С‡Р°Р»СЊРЅСѓСЋ РїРѕР·РёС†РёСЋ СЃ РєРѕС‚РѕСЂРѕР№ СЃР»РµРґСѓРµС‚ СѓРґР°Р»РёС‚СЊ: ";
 						cin >> st;
 					}
 					while (fin == -1) {
-						cout << "Введите конечную позицию с которой следует удалить: ";
+						cout << "Р’РІРµРґРёС‚Рµ РєРѕРЅРµС‡РЅСѓСЋ РїРѕР·РёС†РёСЋ СЃ РєРѕС‚РѕСЂРѕР№ СЃР»РµРґСѓРµС‚ СѓРґР°Р»РёС‚СЊ: ";
 						cin >> fin;
 					}
 					while (choose < 0 || choose >1) {
-						cout << "Введите 0 чтобы укоротить последовательность A, 1 для B: ";
+						cout << "Р’РІРµРґРёС‚Рµ 0 С‡С‚РѕР±С‹ СѓРєРѕСЂРѕС‚РёС‚СЊ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ A, 1 РґР»СЏ B: ";
 						cin >> choose;
 					}
 					if (choose) {
 						B.erase(st, fin);
-						//B.getInf();
-						//B.getInfSeq();
 					}
 					else {
 						A.erase(st, fin);
-						//A.getInf();
-						//A.getInfSeq();
 					}
 					break;
 				case 3:
 					A.excl(B);
-					//A.getInf();
-					//A.getInfSeq();
 					break;
 				case 0:
 					break;
 				default:
-					cout << "Такого пункта не существует, повторите ввод!" << endl;
+					cout << "РўР°РєРѕРіРѕ РїСѓРЅРєС‚Р° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ!" << endl;
 				}
 			}
 		} while (pause);
-		cout << "Для выхода в меню введите любое число, для выхода 0: ";
+		cout << "Р”Р»СЏ РІС‹С…РѕРґР° РІ РјРµРЅСЋ РІРІРµРґРёС‚Рµ Р»СЋР±РѕРµ С‡РёСЃР»Рѕ, РґР»СЏ РІС‹С…РѕРґР° 0: ";
 		cin >> pause;
 	} while (pause);
 	return 0;
 }
 //***********************************************************************
-//Функции
+//Р¤СѓРЅРєС†РёРё
 int menu(int type)
 {
 	int point;
 	do {
 		cin.clear();
 		cin.sync();
-		cout << "Выберите пункт меню" << endl;
+		cout << "Р’С‹Р±РµСЂРёС‚Рµ РїСѓРЅРєС‚ РјРµРЅСЋ" << endl;
 		switch (type) {
 			case 0:
-				cout << "1 - Демо последовательности" << endl;
-				cout << "2 - Сгенерировать последовательности" << endl;
-				cout << "3 - Ввести последовательности" << endl;
-				cout << "0 - Выход" << endl;
+				cout << "1 - Р”РµРјРѕ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё" << endl;
+				cout << "2 - РЎРіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё" << endl;
+				cout << "3 - Р’РІРµСЃС‚Рё РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё" << endl;
+				cout << "0 - Р’С‹С…РѕРґ" << endl;
 				break;
 			case 1: 
-				cout << "1 - CONCAT (Сцепление последовательности A с B)" << endl;
-				cout << "2 - ERASE (Укорачивание последовательности)" << endl;
-				cout << "3 - EXCL (Исключение последовательности B из A)" << endl;
-				cout << "0 - Выход" << endl;
+				cout << "1 - CONCAT (РЎС†РµРїР»РµРЅРёРµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё A СЃ B)" << endl;
+				cout << "2 - ERASE (РЈРєРѕСЂР°С‡РёРІР°РЅРёРµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё)" << endl;
+				cout << "3 - EXCL (РСЃРєР»СЋС‡РµРЅРёРµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё B РёР· A)" << endl;
+				cout << "0 - Р’С‹С…РѕРґ" << endl;
 				break;
 		}
 		cout << ">";
 		cin >> point;
 		if (cin.fail())
-			cout << "Что-то пошло не так, выберите пункт меню повторно" << endl;
+			cout << "Р§С‚Рѕ-С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє, РІС‹Р±РµСЂРёС‚Рµ РїСѓРЅРєС‚ РјРµРЅСЋ РїРѕРІС‚РѕСЂРЅРѕ" << endl;
 	} while (cin.fail());
 	return point;
 }

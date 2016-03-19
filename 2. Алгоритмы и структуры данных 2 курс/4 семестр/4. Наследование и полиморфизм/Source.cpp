@@ -1,3 +1,4 @@
+п»ї//Р‘С‹Р» С‡Р°СЃС‚РёС‡РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅ РєРѕРґ Bjarne Stroustrup'Р°
 #include <iostream>
 #include "conio.h"
 #include "time.h"
@@ -6,9 +7,9 @@
 using namespace std;
 
 class Face : public rectangle {
-	line* l_eye; //левый глаз
-	line* r_eye; //правый глаз
-	line* mouth; //рот
+	line* l_eye; //Р»РµРІС‹Р№ РіР»Р°Р·
+	line* r_eye; //РїСЂР°РІС‹Р№ РіР»Р°Р·
+	line* mouth; //СЂРѕС‚
 public:
 	Face(point, point);
 	void draw();
@@ -42,55 +43,55 @@ void Face::move(int a, int b)
 
 int main() {
 	setlocale(LC_ALL, "RUS");
-	//Инициализаия фигур
+	//РРЅРёС†РёР°Р»РёР·Р°РёСЏ С„РёРіСѓСЂ
 	screen_init();
 	rotatble* hat = new rectangle(point(0, 0), point(14, 5));
 	shape* hatsBottom = new line(point(0, 15), 21);
 	shape* face = new Face(point(15, 10), point(27, 18));
-	//Построение треугольника по трём точкам! 
-	//Левая точка основания, правая точка основания, вершина
+	//РџРѕСЃС‚СЂРѕРµРЅРёРµ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР° РїРѕ С‚СЂС‘Рј С‚РѕС‡РєР°Рј! 
+	//Р›РµРІР°СЏ С‚РѕС‡РєР° РѕСЃРЅРѕРІР°РЅРёСЏ, РїСЂР°РІР°СЏ С‚РѕС‡РєР° РѕСЃРЅРѕРІР°РЅРёСЏ, РІРµСЂС€РёРЅР°
 	Triangle* lftHorn = new Triangle(point(30, 10), point(34, 10), point(32, 12)); 
 	Triangle* rgtHorn = new Triangle(point(40, 10), point(44, 10), point(42, 12));
 	Triangle* lftWh = new Triangle(point(30, 0), point(33, 0), point(32, 2));
 	Triangle* rgtWh = new Triangle(point(40, 0), point(43, 0), point(42, 2));
 	shape_refresh();
 	system("pause");
-	//Подготовка фигур к стыковке
+	//РџРѕРґРіРѕС‚РѕРІРєР° С„РёРіСѓСЂ Рє СЃС‚С‹РєРѕРІРєРµ
 	lftWh->rotate_left();
 	rgtWh->rotate_right();
 	hat->rotate_right();
 	shape_refresh();
 	system("pause");
-	//Демонстрация отражений
+	//Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ РѕС‚СЂР°Р¶РµРЅРёР№
 	rgtWh->flip_vertically();
 	rgtHorn->flip_horisontally();
 	shape_refresh();
 	system("pause");
-	//Возврат
+	//Р’РѕР·РІСЂР°С‚
 	rgtWh->flip_vertically();
 	rgtHorn->flip_horisontally();
 	shape_refresh();
 	system("pause");
-    //Сборка изображения
-	//Шляпа
+    //РЎР±РѕСЂРєР° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
+	//РЁР»СЏРїР°
 	up(hatsBottom, face);
 	up(hat, face);
-	//Рога
+	//Р РѕРіР°
 	lftUp(lftHorn, hatsBottom);
 	rgtUp(rgtHorn, hatsBottom);
-	//Баккенбарды
+	//Р‘Р°РєРєРµРЅР±Р°СЂРґС‹
 	lftDwn(lftWh, face);
 	rgtDwn(rgtWh, face);
 	shape_refresh();
 	system("pause");
-	//Пусть помашет нам шляпой
+	//РџСѓСЃС‚СЊ РїРѕРјР°С€РµС‚ РЅР°Рј С€Р»СЏРїРѕР№
 	hatsBottom->move(0, 6);
 	up(hat, hatsBottom);
 	lftUp(lftHorn, face);
 	rgtUp(rgtHorn, face);
 	shape_refresh();
 	system("pause");
-	//Возврат шляпы
+	//Р’РѕР·РІСЂР°С‚ С€Р»СЏРїС‹
 	up(hatsBottom, face);
 	up(hat, face);
 	lftUp(lftHorn, hatsBottom);

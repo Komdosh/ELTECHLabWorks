@@ -1,11 +1,11 @@
-#ifndef CLASSES_H
+п»ї#ifndef CLASSES_H
 #define CLASSES_H
 enum genSettings { genPower = 30, genMaxNum = 99 };
-class NODE {	//Узел дерева
+class NODE {	//РЈР·РµР» РґРµСЂРµРІР°
 private:
 	void display(int, int);
 	void out(int, int);
-	int key;		    //Ключ
+	int key;		    //РљР»СЋС‡
 	NODE *next, *down;
 	void erase();
 	friend class TREE23;
@@ -17,7 +17,7 @@ public:
 	//			if(next) delete next; };
 };
 
-class EL {	//Элементы стека
+class EL {	//Р­Р»РµРјРµРЅС‚С‹ СЃС‚РµРєР°
 	NODE* el;
 	int ctl;
 	EL* prev;
@@ -26,7 +26,7 @@ public:
 	EL(NODE *e, int c) : el(e), ctl(c), prev(nullptr) {}
 };
 
-class STACK { //Класс "стек"
+class STACK { //РљР»Р°СЃСЃ "СЃС‚РµРє"
 	EL * ptr; 
 public:
 	STACK() : ptr(nullptr) {}
@@ -37,7 +37,7 @@ public:
 	int pop(NODE *&, int &);
 };
 
-class TREE23 {	//Класс 2-3-дерева
+class TREE23 {	//РљР»Р°СЃСЃ 2-3-РґРµСЂРµРІР°
 	NODE* root;
 	int height;
 	char name;
@@ -47,11 +47,11 @@ public:
 	const TREE23& operator = (const TREE23 &);
 
 	bool find(int num) const;
-	int insert(int);   //Вставка элемента
-	void display();    //Вывод на экран
-	int build(int);    //Построение дерева
-	int step(NODE *&, STACK&) const; //Шаг обхода
-	void genSet();     //Генерация данных
+	int insert(int);   //Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р°
+	void display();    //Р’С‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
+	int build(int);    //РџРѕСЃС‚СЂРѕРµРЅРёРµ РґРµСЂРµРІР°
+	int step(NODE *&, STACK&) const; //РЁР°Рі РѕР±С…РѕРґР°
+	void genSet();     //Р“РµРЅРµСЂР°С†РёСЏ РґР°РЅРЅС‹С…
 	TREE23(char n = 'T') : root(nullptr), height(0), name(n) {}
 	~TREE23();
 };

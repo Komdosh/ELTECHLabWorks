@@ -1,8 +1,8 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 #include <string>
 #include "screen.h"
-//Базовый класс фигур
+//Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ С„РёРіСѓСЂ
 struct shape {
 	static shape* list;
 	shape* next;
@@ -24,7 +24,7 @@ private:
 };
 
 //--------------------------------------------------------------------
-//Работа с экраном
+//Р Р°Р±РѕС‚Р° СЃ СЌРєСЂР°РЅРѕРј
 
 char screen[XMAX][YMAX];
 
@@ -37,7 +37,7 @@ void screen_init()
 			screen[x][y] = white;
 }
 
-inline int on_screen(int a, int b) //Попадание на экран
+inline int on_screen(int a, int b) //РџРѕРїР°РґР°РЅРёРµ РЅР° СЌРєСЂР°РЅ
 {
  return (0 <= a && a < XMAX && 0 <= b && b < YMAX);
 }
@@ -50,10 +50,10 @@ void put_point(int a, int b)
 void put_line(int x0, int y0, int x1, int y1)
 {
 	/*
-	Рисование отрезка прямой (x0, y0) - (x1, y1)
-	Уравнение прямой: b(x-x0) + a(y-y0) = 0
-	Минимизируется величина abs(eps)
-	где eps = 2*(b(x-x0))+a(y-y0)
+	Р РёСЃРѕРІР°РЅРёРµ РѕС‚СЂРµР·РєР° РїСЂСЏРјРѕР№ (x0, y0) - (x1, y1)
+	РЈСЂР°РІРЅРµРЅРёРµ РїСЂСЏРјРѕР№: b(x-x0) + a(y-y0) = 0
+	РњРёРЅРёРјРёР·РёСЂСѓРµС‚СЃСЏ РІРµР»РёС‡РёРЅР° abs(eps)
+	РіРґРµ eps = 2*(b(x-x0))+a(y-y0)
 	*/
 	int dx = 1;
 	int a = x1 - x0;
@@ -86,15 +86,15 @@ void screen_refresh()
 }
 
 
-shape* shape::list = nullptr; //Иницализация списка фигур
+shape* shape::list = nullptr; //РРЅРёС†Р°Р»РёР·Р°С†РёСЏ СЃРїРёСЃРєР° С„РёРіСѓСЂ
 
-class rotatble : public virtual shape { //Фигуры, пригодные к повороту
+class rotatble : public virtual shape { //Р¤РёРіСѓСЂС‹, РїСЂРёРіРѕРґРЅС‹Рµ Рє РїРѕРІРѕСЂРѕС‚Сѓ
 public:
 	virtual void rotate_left() = 0;
 	virtual void rotate_right() = 0;
 };
 
-class reflectable : public virtual shape {//Фигуры пригодные к зеркальному отражению
+class reflectable : public virtual shape {//Р¤РёРіСѓСЂС‹ РїСЂРёРіРѕРґРЅС‹Рµ Рє Р·РµСЂРєР°Р»СЊРЅРѕРјСѓ РѕС‚СЂР°Р¶РµРЅРёСЋ
 public:
 	virtual void flip_horisontally() = 0;
 	virtual void flip_vertically() = 0;
@@ -102,15 +102,15 @@ public:
 
 class line : public shape {
 	/*
-	Отрезок прямой ["w", "e"]
-	north() определяет точку "выше центра отрезка и так далеко на север, 
-	как самая его северная точка", и т.п.
+	РћС‚СЂРµР·РѕРє РїСЂСЏРјРѕР№ ["w", "e"]
+	north() РѕРїСЂРµРґРµР»СЏРµС‚ С‚РѕС‡РєСѓ "РІС‹С€Рµ С†РµРЅС‚СЂР° РѕС‚СЂРµР·РєР° Рё С‚Р°Рє РґР°Р»РµРєРѕ РЅР° СЃРµРІРµСЂ, 
+	РєР°Рє СЃР°РјР°СЏ РµРіРѕ СЃРµРІРµСЂРЅР°СЏ С‚РѕС‡РєР°", Рё С‚.Рї.
 	*/
 	point w, e;
 	line(const line&);
 	line(const line&&);
 public:
-	/*Как было
+	/*РљР°Рє Р±С‹Р»Рѕ
 	point north() const { return point((w.x + e.x) / 2, e.y<w.y ? w.y : e.y); }
 	point south() const { return point((w.x + e.x) / 2, e.y<w.y ? e.y : w.y); }
 	point east() const { return point((w.x + e.x) / 2, e.y<w.y ? e.y : w.y); }
@@ -120,7 +120,7 @@ public:
 	point nwest() const { return point((w.x + e.x) / 2, e.y<w.y ? e.y : w.y); }
 	point swest() const { return point((w.x + e.x) / 2, e.y<w.y ? e.y : w.y); }
 	*/
-	/*Исправление предыдущего кода
+	/*РСЃРїСЂР°РІР»РµРЅРёРµ РїСЂРµРґС‹РґСѓС‰РµРіРѕ РєРѕРґР°
 	point north() const { return point((w.x + e.x) / 2, e.y < w.y ? w.y : e.y); }
 	point south() const { return point((w.x + e.x) / 2, e.y < w.y ? e.y : w.y); }
 	point east() const { return point(e.x, (w.y + e.y) / 2); }
@@ -130,7 +130,7 @@ public:
 	point nwest() const { return point(w.x, e.y < w.y ? w.y : e.y); }
 	point swest() const { return point(w.x, e.y < w.y ? e.y : w.y); }
 	*/
-	//Более рациональное исправление
+	//Р‘РѕР»РµРµ СЂР°С†РёРѕРЅР°Р»СЊРЅРѕРµ РёСЃРїСЂР°РІР»РµРЅРёРµ
 	point north() const { return point((w.x + e.x) / 2, e.y < w.y ? w.y : e.y); }
 	point south() const { return point((w.x + e.x) / 2, e.y < w.y ? e.y : w.y); }
 	point east() const { return e; }
@@ -152,7 +152,7 @@ public:
 	}
 };
 
-//Прямоугольник
+//РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє
 class rectangle:public rotatble {
 	/*
 	nw-----n-----ne
@@ -175,13 +175,13 @@ public:
 	point seast() const { return point(ne.x, sw.y); }
 	point nwest() const { return point(sw.x, ne.y); }
 	point swest() const { return sw; }
-	void rotate_right()//Поворот относительно se
+	void rotate_right()//РџРѕРІРѕСЂРѕС‚ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ se
 	{
 		int w = ne.x - sw.x, h = ne.y - sw.y;
 		sw.x = ne.x - h * 2;
 		ne.y = sw.y + w / 2;
 	}
-	void rotate_left() //Поворот относительно sw
+	void rotate_left() //РџРѕРІРѕСЂРѕС‚ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ sw
 	{
 		int w = ne.x - sw.x, h = ne.y - sw.y;
 		ne.x = sw.x + h * 2;
@@ -229,7 +229,7 @@ void rectangle::draw()
 	put_line(sw, nw);
 }
 
-//Треугольник
+//РўСЂРµСѓРіРѕР»СЊРЅРёРє
 class Triangle:public rotatble, public reflectable {
 	/*
 	nw    top   ne
@@ -306,7 +306,7 @@ Triangle::Triangle(point lft, point rgt, point up)
 
 void Triangle::draw()
 {
-	point curTop, curBaseOne, curBaseTwo; //Текущее положение
+	point curTop, curBaseOne, curBaseTwo; //РўРµРєСѓС‰РµРµ РїРѕР»РѕР¶РµРЅРёРµ
 	switch (pos) {
 	case 0:
 		curBaseOne = sw;
@@ -334,36 +334,36 @@ void Triangle::draw()
 	put_line(curBaseTwo, curTop);
 }
 
-void shape_refresh()//Перерисовка всех фигур
+void shape_refresh()//РџРµСЂРµСЂРёСЃРѕРІРєР° РІСЃРµС… С„РёРіСѓСЂ
 {
 	screen_clear();
 	for (shape* p = shape::list; p; p = p->next) p->draw();
 	screen_refresh();
 }
 
-void up(shape* p, const shape* q)//Поместить p над q
+void up(shape* p, const shape* q)//РџРѕРјРµСЃС‚РёС‚СЊ p РЅР°Рґ q
 {
 	point n = q->north();
 	point s = p->south();
 	p->move(n.x - s.x, n.y - s.y + 1);
 }
 
-void lftUp(shape* p, const shape* q)//Поместить p слева над q
+void lftUp(shape* p, const shape* q)//РџРѕРјРµСЃС‚РёС‚СЊ p СЃР»РµРІР° РЅР°Рґ q
 {
 	p->move(q->nwest().x - p->swest().x, q->nwest().y - p->swest().y + 1);
 }
 
-void rgtUp(shape* p, const shape* q)//Поместить p справа над q
+void rgtUp(shape* p, const shape* q)//РџРѕРјРµСЃС‚РёС‚СЊ p СЃРїСЂР°РІР° РЅР°Рґ q
 {
 	p->move(q->neast().x - p->seast().x, q->nwest().y - p->swest().y + 1);
 }
 
-void rgtDwn(shape* p, const shape* q)//Поместить p справа под q
+void rgtDwn(shape* p, const shape* q)//РџРѕРјРµСЃС‚РёС‚СЊ p СЃРїСЂР°РІР° РїРѕРґ q
 {
 	p->move(q->east().x - p->west().x, q->swest().y - p->nwest().y);
 }
 
-void lftDwn(shape* p, const shape* q)//Поместить p справа под q
+void lftDwn(shape* p, const shape* q)//РџРѕРјРµСЃС‚РёС‚СЊ p СЃРїСЂР°РІР° РїРѕРґ q
 {
 	p->move(q->west().x - p->east().x, q->swest().y - p->nwest().y);
 }
