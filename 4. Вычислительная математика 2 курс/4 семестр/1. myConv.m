@@ -1,11 +1,12 @@
+%simple
 % function ans=myConv(A,B) 
 % clc;
 % clearvars -except A B;
 % if(isvector(A)>1)
-%     error('A должно быть вектором!')
+%     error('A РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РІРµРєС‚РѕСЂРѕРј!')
 % else
 %     if(isvector(B)>1)
-%         error('B должно быть вектором!')
+%         error('B РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РІРµРєС‚РѕСЂРѕРј!')
 %     end
 % end
 % ans = zeros(1, length(A)+length(B)-1);
@@ -17,14 +18,15 @@
 % ans
 % end
 
+%harder
 function C=myConv(A,B) 
  clc;
  clearvars -except A B;
  if(isvector(A)>1)
-     error('A должно быть вектором!')
+     error('A РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РІРµРєС‚РѕСЂРѕРј!')
  else
     if(isvector(B)>1)
-         error('B должно быть вектором!')
+         error('B РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РІРµРєС‚РѕСЂРѕРј!')
      end
  end
  lenA = length(A); 
@@ -35,5 +37,3 @@ function C=myConv(A,B)
   jx = min(k,lenB);
   C(k) = sum(A(k+1-jx:ix).*B(jx:-1:k+1-ix));
  end
- 
- C
