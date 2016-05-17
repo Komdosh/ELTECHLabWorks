@@ -2,7 +2,7 @@ function C = myPolyval(p, x)
     clc;
     clearvars -except p x;
     if ~(isvector(p) || isempty(p))
-        error('Нет, давайте первым аргументом вектор');
+        error('РќРµС‚, РґР°РІР°Р№С‚Рµ РїРµСЂРІС‹Рј Р°СЂРіСѓРјРµРЅС‚РѕРј РІРµРєС‚РѕСЂ');
     end
     sizeX = size(x);
     k = x;
