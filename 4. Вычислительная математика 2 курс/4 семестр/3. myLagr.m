@@ -2,7 +2,7 @@ function L=myLagr(X, myFunc, P)
     Y = myFunc(X);
     N = length(X);
     if(isvector(X)>1)
-        error('X должно быть вектором!')
+        error('X РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІРµРєС‚РѕСЂРѕРј!')
     end
     L=zeros(1, N);
     for i=1:N
