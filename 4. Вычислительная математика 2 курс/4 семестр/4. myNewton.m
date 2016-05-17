@@ -1,18 +1,14 @@
-function N = myNewton(X, Y, myFunc)
+function N = myNewton(X, myFunc)
     %clc;
-    clearvars -except X Y myFunc xx;
+    clearvars -except X myFunc;
+    Y = myFunc(X);
     lenX = length(X);
     if(isvector(X)>1)
-        error('X должно быть вектором!')
+        error('X РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РІРµРєС‚РѕСЂРѕРј!')
     else
         if(isvector(Y)>1)
-            error('Y должно быть вектором!')
-        else
-            if(lenX~=length(Y))
-                error('Вектора должны иметь один и тот же размер!')
-            end
+            error('Y РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РІРµРєС‚РѕСЂРѕРј!')
         end
-    end
     
     dif = Y;
     for j = 2:lenX 
