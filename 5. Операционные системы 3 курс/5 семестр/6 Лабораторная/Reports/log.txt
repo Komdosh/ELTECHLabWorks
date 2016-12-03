@@ -1,0 +1,180 @@
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+Writer: cannot write data to memory
+34827285 writer: wait semaphore 
+34827285 writer: ready 
+34827316 writer: start writing
+34827316 writer: writing completed. page 4. waiting
+34827519 writer: wait semaphore 
+34827519 writer: ready 
+34827550 writer: start writing
+34827550 writer: writing completed. page 0. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+Writer: cannot write data to memory
+34827394 writer: wait semaphore 
+34827394 writer: ready 
+34827410 writer: start writing
+34827410 writer: writing completed. page 2. waiting
+34827628 writer: wait semaphore 
+34827628 writer: ready 
+34827644 writer: start writing
+34827644 writer: writing completed. page 3. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+34828206 reader: wait semaphore 
+34828206 reader: ready 
+34828206 reader: start reading
+34828221 reader: reading completed. page 0 : this is page #0. writing time = 34827535. waiting
+34828440 reader: wait semaphore 
+34828440 reader: ready 
+34828455 reader: start reading
+34828455 reader: reading completed. page 1 : this is page #1. writing time = 34827613. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+34828299 reader: wait semaphore 
+34828299 reader: ready 
+34828315 reader: start reading
+34828330 reader: reading completed. page 4 : this is page #4. writing time = 34828206. waiting
+34828549 reader: wait semaphore 
+34828549 reader: ready 
+34828549 reader: start reading
+34828564 reader: reading completed. page 5 : this is page #5. writing time = 34828440. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+Writer: cannot write data to memory
+34827488 writer: wait semaphore 
+34827488 writer: ready 
+34827519 writer: start writing
+34827519 writer: writing completed. page 5. waiting
+34827722 writer: wait semaphore 
+34827722 writer: ready 
+34827738 writer: empty page not found, waiting. 
+34828034 writer: empty page not found, waiting. 
+34828346 writer: start writing
+34828346 writer: writing completed. page 0. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+34828096 reader: wait semaphore 
+34828096 reader: ready 
+34828112 reader: start reading
+34828128 reader: reading completed. page 4 : this is page #4. writing time = 34827301. waiting
+34828330 reader: wait semaphore 
+34828330 reader: ready 
+34828346 reader: start reading
+34828362 reader: reading completed. page 5 : this is page #5. writing time = 34827504. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+34828408 reader: wait semaphore 
+34828408 reader: ready 
+34828424 reader: start reading
+34828424 reader: reading completed. page 0 : this is page #0. writing time = 34828346. waiting
+34828642 reader: wait semaphore 
+34828642 reader: ready 
+34828658 reader: start reading
+34828658 reader: reading completed. page 0 : this is page #0. writing time = 34828440. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+Writer: cannot write data to memory
+34827597 writer: wait semaphore 
+34827597 writer: ready 
+34827613 writer: start writing
+34827613 writer: writing completed. page 1. waiting
+34827831 writer: wait semaphore 
+34827831 writer: ready 
+34827847 writer: empty page not found, waiting. 
+34828143 writer: empty page not found, waiting. 
+34828455 writer: start writing
+34828455 writer: writing completed. page 5. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+Writer: cannot write data to memory
+34827894 writer: wait semaphore 
+34827894 writer: ready 
+34827909 writer: empty page not found, waiting. 
+34828221 writer: start writing
+34828221 writer: writing completed. page 4. waiting
+34828440 writer: wait semaphore 
+34828440 writer: ready 
+34828455 writer: start writing
+34828455 writer: writing completed. page 0. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+34828502 reader: wait semaphore 
+34828502 reader: ready 
+34828518 reader: start reading
+34828533 reader: reading completed. page 4 : this is page #4. writing time = 34828408. waiting
+34828752 reader: wait semaphore 
+34828752 reader: ready 
+34828752 reader: start reading
+34828767 reader: reading completed. page 4 : this is page #4. writing time = 34828627. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+34828611 reader: wait semaphore 
+34828611 reader: ready 
+34828627 reader: start reading
+34828627 reader: reading completed. page 2 : this is page #2. writing time = 34827394. waiting
+34828845 reader: wait semaphore 
+34828845 reader: ready 
+34828861 reader: start reading
+34828861 reader: reading completed. page 3 : this is page #3. writing time = 34827644. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+Writer: cannot write data to memory
+34827800 writer: wait semaphore 
+34827800 writer: ready 
+34827800 writer: empty page not found, waiting. 
+34828112 writer: empty page not found, waiting. 
+34828424 writer: start writing
+34828424 writer: writing completed. page 4. waiting
+34828627 writer: wait semaphore 
+34828627 writer: ready 
+34828658 writer: start writing
+34828658 writer: writing completed. page 2. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+34828705 reader: wait semaphore 
+34828705 reader: ready 
+34828720 reader: start reading
+34828736 reader: reading completed. page 1 : this is page #1. writing time = 34828611. waiting
+34828954 reader: wait semaphore 
+34828954 reader: ready 
+34828954 reader: start reading
+34828970 reader: reading completed. page 0 : this is page #0. writing time = 34828845. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+34828814 reader: wait semaphore 
+34828814 reader: ready 
+34828830 reader: start reading
+34828830 reader: reading completed. page 2 : this is page #2. writing time = 34828642. waiting
+34829048 reader: wait semaphore 
+34829048 reader: ready 
+34829064 reader: start reading
+34829064 reader: reading completed. page 1 : this is page #1. writing time = 34828861. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+Writer: cannot write data to memory
+34827691 writer: wait semaphore 
+34827691 writer: ready 
+34827706 writer: empty page not found, waiting. 
+34828003 writer: empty page not found, waiting. 
+34828315 writer: empty page not found, waiting. 
+34828627 writer: start writing
+34828627 writer: writing completed. page 1. waiting
+34828830 writer: wait semaphore 
+34828830 writer: ready 
+34828861 writer: start writing
+34828861 writer: writing completed. page 0. waiting
+Reader: cannot open reader semaphore
+Writer: cannot open writer semaphore
+Writer: cannot write data to memory
+34828018 writer: wait semaphore 
+34828018 writer: ready 
+34828018 writer: empty page not found, waiting. 
+34828330 writer: empty page not found, waiting. 
+34828627 writer: start writing
+34828627 writer: writing completed. page 4. waiting
+34828845 writer: wait semaphore 
+34828845 writer: ready 
+34828861 writer: start writing
+34828861 writer: writing completed. page 1. waiting
