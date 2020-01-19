@@ -54,13 +54,6 @@ int main() {
     setlocale(LC_ALL, "RUS");
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    puts("1 - Справка");
-    puts("2 - Добавить элемент в список");
-    puts("3 - Удалить элемент из списка");
-    puts("4 - Вывод списка");
-    puts("5 - Поиск");
-    puts("6 - Сортировка");
-    puts("7 - Выход");
     do {
         menu();
         switch (menuItem = enterNum(1, 7)) {
